@@ -55,20 +55,25 @@ export default class NewsComponent extends Component {
       <div className="container my-2">
         <h1>NewsInside - Top HeadLines</h1>
         <div className="row">
-          <div className="col-md-4">
-            <NewsItem
-              title="My title"
-              description="My description"
-              imageUrl="https://a4.espncdn.com/combiner/i?img=%2Fi%2Fcricket%2Fcricinfo%2F1219926_1296x729.jpg"
-              newsUrl="Todo"
-            />
-          </div>
-          <div className="col-md-4">
-            <NewsItem title="My title" description="My description" />
-          </div>
-          <div className="col-md-4">
-            <NewsItem title="My title" description="My description" />
-          </div>
+          {/* we are using javascript higher order method called map and iterate over array */}
+          {this.state.article.map((element) => {
+            // console.log(element);
+            return (
+              <div className="col-md-4" key={element.url}>
+                <NewsItem
+                  title={
+                    element.title.length > 45
+                      ? element.title.slice(0, 45) + "..."
+                      : element.title
+                  }
+                  description={element.description.slice(0, 100)}
+                  imageUrl={element.urlToImage}
+                  newsUrl={element.url}
+                />
+              </div>
+            );
+          })}
+          ;
         </div>
       </div>
     );
