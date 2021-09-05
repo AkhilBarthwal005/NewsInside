@@ -8,7 +8,7 @@ export default class NewsItem extends Component {
       <div
         className="card my-2"
         style={{
-          width: "18rem",
+          // width: "18rem",
           backgroundColor: "#04021f",
           color: "white",
           border: "2px solid white",
