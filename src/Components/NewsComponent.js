@@ -96,7 +96,7 @@ export default class NewsComponent extends Component {
                       }
                       description={
                         element.description
-                          ? element.description.slice(0, 100) + "..."
+                          ? element.description.slice(0, 250) + "..."
                           : "Description is missing"
                       }
                       imageUrl={element.urlToImage}
