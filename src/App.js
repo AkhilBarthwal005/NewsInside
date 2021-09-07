@@ -8,6 +8,7 @@ import Footer from "./Components/Footer";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 export default class App extends Component {
+  pageSize = 6;
   render() {
     return (
       <div>
@@ -17,7 +18,7 @@ export default class App extends Component {
             <Route exact path="/">
               <NewsComponent
                 key="general"
-                pageSize="6"
+                pageSize={this.pageSize}
                 country="in"
                 category="general"
               />
@@ -25,7 +26,7 @@ export default class App extends Component {
             <Route exact path="/business">
               <NewsComponent
                 key="business"
-                pageSize="6"
+                pageSize={this.pageSize}
                 country="in"
                 category="business"
               />
@@ -33,7 +34,7 @@ export default class App extends Component {
             <Route exact path="/entertainment">
               <NewsComponent
                 key="entertainment"
-                pageSize="6"
+                pageSize={this.pageSize}
                 country="in"
                 category="entertainment"
               />
@@ -41,7 +42,7 @@ export default class App extends Component {
             <Route exact path="/health">
               <NewsComponent
                 key="health"
-                pageSize="6"
+                pageSize={this.pageSize}
                 country="in"
                 category="health"
               />
@@ -49,7 +50,7 @@ export default class App extends Component {
             <Route exact path="/science">
               <NewsComponent
                 key="science"
-                pageSize="6"
+                pageSize={this.pageSize}
                 country="in"
                 category="science"
               />
@@ -57,7 +58,7 @@ export default class App extends Component {
             <Route exact path="/sports">
               <NewsComponent
                 key="sports"
-                pageSize="6"
+                pageSize={this.pageSize}
                 country="in"
                 category="sports"
               />
@@ -65,7 +66,7 @@ export default class App extends Component {
             <Route exact path="/technology">
               <NewsComponent
                 key="technology"
-                pageSize="6"
+                pageSize={this.pageSize}
                 country="in"
                 category="technology"
               />

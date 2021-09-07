@@ -31,9 +31,15 @@ export default class NewsComponent extends Component {
 
   async componentDidMount() {
     // this is function which run after the render method automatically and we are making it async.
-    console.log("cdm method");
+    // console.log("cdm method");
+    this.loadNews(this.state.page);
+  }
+
+  loadNews = async (page) => {
+    console.log("load method");
+    // console.log(this.state.page);
     this.setState({ loading: true });
-    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=4b32f83d132f4a188e704ad96a6575e2&page=1&pageSize=${this.props.pageSize}`;
+    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=4b32f83d132f4a188e704ad96a6575e2&page=${page}&pageSize=${this.props.pageSize}`;
     let data = await fetch(url);
     let parseData = await data.json();
     console.log(parseData);
@@ -42,16 +48,6 @@ export default class NewsComponent extends Component {
       totalResult: parseData.totalResults,
       loading: false,
     });
-  }
-
-  loadNews = async (page) => {
-    console.log("load method");
-    // console.log(this.state.page);
-    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=4b32f83d132f4a188e704ad96a6575e2&page=${page}&pageSize=${this.props.pageSize}`;
-    let data = await fetch(url);
-    let parseData = await data.json();
-    // console.log(parseData);
-    this.setState({ article: parseData.articles, loading: false });
   };
 
   handlePrevious = () => {
