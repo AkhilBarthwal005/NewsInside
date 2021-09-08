@@ -16,8 +16,8 @@ export default class NewsComponent extends Component {
     category: PropTypes.string,
   };
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     console.log("Hello i am constructor of News Component");
 
     this.state = {
@@ -27,11 +27,14 @@ export default class NewsComponent extends Component {
       page: 1,
       totalResult: 0,
     };
+    document.title = `NewsInsider - ${this.capitalize(this.props.category)}`;
   }
 
+  capitalize = (str) => {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  };
+
   async componentDidMount() {
-    // this is function which run after the render method automatically and we are making it async.
-    // console.log("cdm method");
     this.loadNews(this.state.page);
   }
 
@@ -39,7 +42,7 @@ export default class NewsComponent extends Component {
     console.log("load method");
     // console.log(this.state.page);
     this.setState({ loading: true });
-    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=4b32f83d132f4a188e704ad96a6575e2&page=${page}&pageSize=${this.props.pageSize}`;
+    const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=4b32f83d132f4a188e704ad96a6575e2&page=${page}&pageSize=${this.props.pageSize}`;
     let data = await fetch(url);
     let parseData = await data.json();
     console.log(parseData);
@@ -50,18 +53,18 @@ export default class NewsComponent extends Component {
     });
   };
 
-  handlePrevious = () => {
+  handlePrevious = async () => {
     console.log("Previous page");
-    this.setState({ loading: true });
+    // this.setState({ loading: true });
     this.loadNews(this.state.page - 1);
     this.setState({
       page: this.state.page - 1,
     });
     console.log(this.state.page);
   };
-  handleNext = () => {
+  handleNext = async () => {
     console.log("Next page");
-    this.setState({ loading: true });
+    // this.setState({ loading: true });
     console.log(this.state.page);
     this.loadNews(this.state.page + 1);
     this.setState({
@@ -73,7 +76,9 @@ export default class NewsComponent extends Component {
     return (
       <div>
         <div className="container my-2">
-          <h1 className="text-center my-4">NewsInsider - Top HeadLines</h1>
+          <h1 className="text-center my-4">
+            NewsInsider - Top {this.capitalize(this.props.category)} HeadLines
+          </h1>
           {this.state.loading && <Spinner />}
           <div className="row">
             {/* we are using javascript higher order method called map and iterate over array */}
