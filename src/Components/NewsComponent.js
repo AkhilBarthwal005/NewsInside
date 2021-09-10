@@ -37,7 +37,9 @@ export default class NewsComponent extends Component {
 
   async componentDidMount() {
     console.log("cmd");
-    this.loadNews();
+    this.props.setProgress(10);
+    await this.loadNews();
+    this.props.setProgress(100);
   }
 
   loadNews = async () => {
