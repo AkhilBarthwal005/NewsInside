@@ -67,7 +67,10 @@ export default class NewsComponent extends Component {
     return (
       <div>
         <div>
-          <h1 className="text-center my-4">
+          <h1
+            className="text-center"
+            style={{ margin: "30px 0px", marginTop: "90px" }}
+          >
             NewsInsider - Top {this.capitalize(this.props.category)} HeadLines
           </h1>
           {/* {this.state.loading && <Spinner />} */}
