@@ -41,7 +41,8 @@ Welcome to NewsInsider, a React-based web application for fetching and displayin
 - Real-time updates from the News API
   
 ## Screenshots
- Include screenshots or gifs showcasing the app's UI and functionality.
+ ![Home Page For Desktop](https://github.com/AkhilBarthwal005/NewsInsider/blob/master/public/pc.png)
+ ![Home Page For Mobile Device](https://github.com/AkhilBarthwal005/NewsInsider/blob/master/public/mobile.png)
 
 ## Technologies Used
 - React
